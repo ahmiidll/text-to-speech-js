@@ -1,0 +1,98 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f8cbdf;
+}
+
+/* Container styling */
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    text-align: center;
+}
+
+/* Title styling */
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Button styling */
+.btn {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 50px;
+    background-color: #363741;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #363743;
+    transform: scale(1.05);
+}
+
+.btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Controls container */
+.controls {
+    margin-bottom: 20px;
+}
+
+/* Output container */
+.output {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    min-height: 150px;
+    font-size: 16px;
+    color: #333;
+    text-align: left;
+    white-space: pre-wrap;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* Placeholder styling */
+.output::before {
+    content: attr(placeholder);
+    color: #999;
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.output:empty::before {
+    display: block;
+}
+
+.output:not(:empty)::before {
+    display: none;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Speech to Text</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Speech to Text</h1>
+    <div class="controls">
+      <button id="start-btn" class="btn" onclick="startRecognition()">🎙️ Start Recognition</button>
+      <button id="stop-btn" class="btn" onclick="stopRecognition()">🛑 Stop Recognition</button>
+    </div>
+    <div id="output" class="output" placeholder="Recognized text will appear here..."></div>
+  </div>
+
+  <script>
+    if (!('webkitSpeechRecognition' in window)) {
+      alert("Your browser does not support speech recognition. Try Google Chrome.");
+    } else {
+      var recognition = new webkitSpeechRecognition();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = 'en-US', 'hi-IN';
+
+      recognition.onresult = function(event) {
+        var transcript = '';
+        for (var i = event.resultIndex; i < event.results.length; ++i) {
+          transcript += event.results[i][0].transcript;
+        }
+        console.log(transcript);
+        document.getElementById('output').innerText = transcript;
+      };
+
+      recognition.onerror = function(event) {
+        console.error("Speech recognition error detected: " + event.error);
+      };
+
+      function startRecognition() {
+        recognition.start();
+        console.log("Recognition started");
+      }
+
+      function stopRecognition() {
+        recognition.stop();
+        console.log("Recognition stopped");
+      }
+    }
+  </script>
+</body>
+</html>
